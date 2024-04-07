@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./routes/user.js";
 import authRouter from "./routes/authroute.js";
+import listingRouter from './routes/listingroute.js'
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 const app = express();
@@ -22,13 +23,15 @@ mongoose
       credentials: true
     }
   ));
-
-  app.use(cookieParser());
   app.use(express.json());
+  app.use(cookieParser());
+  
 
   app.use('/api/user',userRouter);
-
   app.use('/api/auth',authRouter);
+  app.use('/api/listing',listingRouter);
+
+ 
 
 
   app.use((err,req,res,next)=>{
