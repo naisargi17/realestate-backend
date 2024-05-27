@@ -6,6 +6,7 @@ import listingRouter from './routes/listingroute.js'
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 const app = express();
+import path from "path";
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/realestate")
@@ -16,6 +17,8 @@ mongoose
     });
   })
   .catch((err) => console.log("error"));
+
+  const __dirname = path.resolve();
 
   app.use(cors(
     {
@@ -31,6 +34,12 @@ mongoose
   app.use('/api/auth',authRouter);
   app.use('/api/listing',listingRouter);
 
+  app.use(express.static(path.join(__dirname,'/client/dist')));
+
+  app.get("/", (req, res) => {
+    app.use(express.static(path.resolve(__dirname, "client", "build")));
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
  
 
 
