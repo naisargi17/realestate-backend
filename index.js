@@ -9,7 +9,7 @@ const app = express();
 import path from "path";
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/realestate")
+  .connect("mongodb+srv://patelnaisargi74:naisargi123@cluster0.vjrdl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => {
     console.log("MongoDB connected");
     app.listen(3000, () => {
