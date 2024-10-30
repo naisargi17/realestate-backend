@@ -27,7 +27,7 @@ mongoose
 const __dirname = path.resolve();
 
 app.use(cors({
-  origin: "http://localhost:3000",  // Allow requests from Vite server
+  origin: "https://realestate-frontend-psi.vercel.app/",  // Allow requests from Vite server
   credentials: true
 }));
 
